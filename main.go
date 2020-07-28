@@ -46,6 +46,6 @@ func main() {
 		w.WriteHeader(200)
 	})
 
-	fmt.Printf("Publishing %d fake Prometheus metrics at address %s with base name of %s and refresh interval of %d seconds", *metricsCount, *addr, *metricName, *sleepTime)
+	fmt.Printf("Publishing %d fake Prometheus metrics at address %s with base name of %s and refresh interval of %d seconds\n", *metricsCount, *addr, *metricName, *sleepTime)
 	log.Fatal(http.ListenAndServe(*addr, nil))
 }
