@@ -42,6 +42,9 @@ func main() {
     recordMetrics(metrics, *sleepTime)
     
     http.Handle("/metrics", promhttp.Handler())
+    http.HandleFunc("/health", func(w http.ResponseWriter, request *http.Request) {
+        w.WriteHeader(200)
+    })
 
     fmt.Printf("Publishing %d fake Prometheus metrics at address %s with base name of %s and refresh interval of %d seconds", *metricsCount, *addr, *metricName, *sleepTime)
     log.Fatal(http.ListenAndServe(*addr, nil))
